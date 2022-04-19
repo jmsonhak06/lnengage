@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<!--suppress ALL, JSUnusedGlobalSymbols -->
+
+<html class="height: auto" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+    <meta name="description" content="ENGAGE CARAGA: Building Resilience, Reducing Vulnerability">
+    <meta name="author" content="Caraga State University">
+    <meta name="keyword" content="Engage Caraga, Flood Hazard, Evacuation Center, Assessment, Las Nieves">
+    <meta content="text/html">
+
+    <link href="img/icons/EngageCaraga-Logo.png/" rel="shortcut icon">
+
+    <title>CSU-Engage Caraga</title>
+
+    <link rel="stylesheet" href="css/leaflet/leaflet.css">
+    <script src="js/leaflet/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
+     <!--Bootstrap CSS and JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!--Admin-lte 3.2.0-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/js/adminlte.min.js" integrity="sha512-KBeR1NhClUySj9xBB0+KRqYLPkM6VvXiiWaSz/8LCQNdRpUm38SWUrj0ccNDNSkwCD9qPA4KobLliG26yPppJA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.2.0/css/alt/adminlte.plugins.min.css" integrity="sha512-ayIIFF0UuqVTtj88SVYRvEcSf+vs9aLDgte4Fd+jdsFFr3zJYo5wEjFFD0QXCM+3WrVUCyUAW8meKc2kzO5Tow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!---Fontawesome CDN Link-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+    <!-- All CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="sidebar.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="ec.css">
+
+</head>
+<body>
+<header>
+    <div class="header" style="float: left;">
+        <img alt src="img/icons/EngageCaraga-Logo.png" style="width: 80px; height: 70px; float: left; margin-left: 40px; margin-top: -0px;">
+        <img alt src="img/icons/EngageCaraga-Name.png" style="width: 180px; height: 60px; margin-left: 15px; margin-top: 3px;">
+        <div class="header-right">
+            <h4>Building Resilience... Reducing Vulnerability</h4>
+            <img alt src="img/icons/AssociatedPartners-Logo.png" style="width: 150px; height: 40px; margin-top: 35px; margin-left: 50px; position: absolute;">
+        </div>
+    </div>
+</header>
+
+<div class="wrapper">
+    <div class="section">
+        <!-- Navigation Menu -->
+        <div class="navbar">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <ul class="nav items">
+                <li>
+                    <a class="hamburger" href="#">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="active" href="index.html">
+                        <i class="fas fa-home fa-fw"></i> Home </a>
+                </li>
+                <li>
+                    <a data-toggle="modal" data-target="#myModalAboutUs">
+                        <i class="fas fa-info-circle fa-fw"></i> About Us </a>
+                </li>
+                <li>
+                    <a href="#" id="how_to" title="How to use this application?">
+                        <i class="fas fa-question-circle"></i> Help </a>
+                </li>
+                <li>
+                    <a data-toggle="modal" data-target="#myModalSerives">
+                        <i class="fas fa-cog fa-fw"></i> Services </a>
+                </li>
+                <li>
+                    <a data-toggle="modal" data-target="#myModalDataSources">
+                        <i class="fas fa-database fa-fw"></i> Data Sources </a>
+                </li>
+                <li>
+                    <a data-toggle="modal" data-target="myModalContact">
+                        <i class="fas fa-envelope fa-fw"></i> Contact </a>
+                </li>
+
+                <ul class="navbar-nav ml-auto" style="margin-left: 940px;">
+                    <li onclick="openFullscreen();">
+                        <a class="nav-link" data-widget="fullscreen" role="button" href="#full-screen">
+                            <i class="fas fa-expand-arrows-alt"></i></a>
+                    </li>
+                </ul>
+            </ul>
+
+        </div>
+
+        <!--Sidepanel for Queries -->
+        <div class="sidebar-nav-header" style="margin-left: -270px;">
+            <h4 class="sidebar-nav-header-title">
+                <span class="fas fa-question"></span> QUERIES </h4>
+        </div>
+        <div class="sidebar" style="margin-top:51px;">
+            <aside class="main-sidebar sidebar-light-info">
+
+                <div class="sidebar-p-b-80" style="overflow-y: auto; overflow-x: hidden;">
+                        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="true" >
+
+                            <li class="sidebar-header-title" style="margin-left: 15px;"> LOCATION TOOLS </li>
+                            <li class="nav-item">
+                                <a id="useLoc" onclick="useCurrentLoc();" class="nav-link" data-toggle="tooltip" data-placement="right" data-original-title="Accuracy of location will depend on GPS of device being used">
+                                    <i class="fas fa-paper-plane text-info p-r-10" style= "margin-top: -3px; float: left;"></i>
+                                    <p style="margin-left: 25px; margin-top: -6px;"> Current Location </p>
+                                </a>
+                            </li>
+                            <div id="output"></div>
+                            <li class="nav-item" style="margin-top: -6px;">
+                                <!-- jquery for this: Province, Municipality then Barangay, Selector -->
+                                <a class="nav-link">
+                                    <i class="fas fa-map-marker-alt text-info p-r-10" style="margin-top: -3px; float: left;"></i>
+                                    <p style="margin-left: 25px; margin-top: -6px;"> Find Location </p>
+                                </a>
+                                <ul class="nav nav-treeview" style="display:none; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+
+                                <li class="form-group" style="margin-left: 5px; margin-top: 2px; margin-bottom: 2px; padding: 5px 5px; width: 220px;">
+                                    <select class="form-control" id="province" name="locality">
+                                            <option value="Nothing Dude">Select Province</option>
+
+                                            <option value="Agusan del Norte">Agusan del Norte</option>
+                                            <option value="Agusan del Sur" disabled="disabled">Agusan del Sur</option>
+                                            <option value="Dinagat Islands" disabled="disabled">Dinagat Islands</option>
+                                            <option value="Surigao del Norte" disabled="disabled">Surigao del Norte</option>
+                                            <option value="Surigao del Sur" disabled="disabled">Surigao del Sur</option>
+                                    </select>
+                                </li>
+                                <li class="form-group" style="margin-left: 5px; margin-top: -25px; margin-bottom: 3px; padding: 5px 5px; width: 220px;">
+                                    <label for="muni"></label>
+                                    <select class="form-control" id="muni" name="muni">
+                                            <option value="All Municipalities">Select Municipality</option>
+
+                                        <option value="Buenavista" disabled="disabled">Buenavista</option>
+                                        <option value="Butuan" disabled="disabled">Butuan</option>
+                                        <option value="Cabadbaran" disabled="disabled">Cabadbaran</option>
+                                        <option value="Carmen" disabled="disabled">Carmen</option>
+                                        <option value="Jabonga" disabled="disabled">Jabonga</option>
+                                        <option value="Kitcharao" disabled="disabled">Kitcharao</option>
+                                        <option value="Las Nieves">Las Nieves</option>
+                                        <option value="Magallanes" disabled="disabled">Magallanes</option>
+                                        <option value="Nasipit" disabled="disabled">Nasipit</option>
+                                        <option value="Remedios T. Romualdez" disabled="disabled">Remedios T. Romualdez</option>
+                                        <option value="Santiago" disabled="disabled">Santiago</option>
+                                        <option value="Tubay" disabled="disabled">Tubay</option>
+                                    </select>
+                                </li>
+                                <li class="form-group" style="margin-left: 5px; margin-top: -25px; margin-bottom: 2px; padding: 5px 5px; width: 220px;">
+                                    <label for="barangays"></label>
+                                    <select class="form-control" id="barangays" name="barangays">
+                                        <option value="All Barangays">Select Barangay</option>
+
+                                        <option value="Ambacon">Ambacon</option>
+                                        <option value="Balungagan">Balungagan</option>
+                                        <option value="Bonifacio">Bonifacio</option>
+                                        <option value="Casiklan">Casiklan</option>
+                                        <option value="Consorcia">Consorcia</option>
+                                        <option value="Durian">Durian</option>
+                                        <option value="E.G. Montilla (Camboayon)">E.G. Montilla  (Camboayon)</option>
+                                        <option value="Ibuan">Ibuan</option>
+                                        <option value="Katipunan">Katipunan</option>
+                                        <option value="Lawan-Lawan">Lawan-Lawan</option>
+                                        <option value="Lingayao">Lingayao</option>
+                                        <option value="Malicato">Malicato</option>
+                                        <option value="Maningalao">Maningalao</option>
+                                        <option value="Marcos Calo">Marcos Calo</option>
+                                        <option value="Mat-i">Mat-i</option>
+                                        <option value="Pinana-an">Pinana-an</option>
+                                        <option value="Poblacion">Poblacion</option>
+                                        <option value="Rosario">Rosario</option>
+                                        <option value="San Isidro">San Isidro</option>
+                                        <option value="San Roque">San Roque</option>
+                                        <option value="Tinucoran">Tinucoran</option>
+                                    </select>
+                                </li>
+                                </ul>
+                            </li>
+
+
+
+
+                <li class="sidebar-header-title" style="margin-top: 3px; margin-left: 15px;"> DISPLAY OPTIONS </li>
+
+                <li class="nav-item has-treeview">
+                <a class="nav-link">
+                    <i class="fas fa-map-marked-alt text-info p-r-10" style="margin-top: -3px; float: left;"></i>
+                    <p style="margin-left: 25px; margin-top: -6px;"> Basemaps <i class="right fa fa-angle-left" style="margin-left: 105px;"></i></p>
+                </a>
+                    <ul class="nav nav-treeview" style="display:none; padding-top: 0px; margin-top: 0px; padding-bottom: 0px; margin-bottom: 0px;">
+
+                    <li class="nav-item" style="margin-left: -3px; margin-top: -10px; padding: 5px 5px;">
+                        <div class="custom-control custom-radio">
+                            <a class="nav-link nav-label display-inline">
+                                <input type="radio" class="custom-control-input rb-basemaps" id="osm" name="basemap">
+                                <label class="custom-control-label" for="osm" style="color:#147e91; font-size:14px;">OpenStreetMap </label>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item" style="margin-left: -3px; margin-top: -10px; padding: 2px 5px;">
+                        <div class="custom-control custom-radio">
+                            <a class="nav-link nav-label display-inline">
+                                <input type="radio" class="custom-control-input rb-basemaps" id="googleSat" name="basemap">
+                                <label class="custom-control-label" for="googleSat" style="color: #147e91; font-size: 14px;">Google Satellite</label>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item" style="margin-left: -3px; margin-top: -10px; padding: 2px 5px;">
+                        <div class="custom-control custom-radio">
+                            <a class="nav-link nav-label display-inline">
+                                <input type="radio" class="custom-control-input rb-basemaps" id="googleHybrid" name="basemap">
+                                <label class="custom-control-label" for="googleHybrid" style="color: #147e91; font-size: 14px;">Google Hybrid</label>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item" style="margin-left: -3px; margin-top:-10px; margin-bottom: 5px;padding: 2px 5px;">
+                        <div class="custom-control custom-radio">
+                            <a class="nav-link nav-label display-inline">
+                                <input type="radio" class="custom-control-input rb-basemaps" id="bingMap" name="basemap">
+                                <label class="custom-control-label" for="bingMap" style="color:#147e91; font-size:14px;">Bing Map</label>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+                </li>
+
+
+                <li class="nav-item has-treeview">
+                <a class="nav-link">
+                    <i class="fas fa-clinic-medical text-info p-r-10" style="margin-top: -3px; float: left;"></i>
+                    <p style="margin-left: 25px; margin-top: -6px;"> Evacuation Centers <i class="right fa fa-angle-left" style="margin-left: 45px;"></i></p>
+                </a>
+
+                <ul class="nav nav-treeview" style="display:none; padding-top:0px; padding-bottom: 0px; margin-bottom: 0px;">
+                    <li class="nav-item" style="margin-left: -3px; margin-top: -10px; padding: 2px 5px;">
+                        <div class="custom-control custom-radio">
+                            <a class="nav-link nav-label display-inline">
+                                <input type="checkbox" class="custom-control-input ch-evacuation centers" id="exst-evac" name="existng-evac">
+                                <label class="custom-control-label" for="exst-evac" style="color:#147e91; font-size: 14px;">Existing Evacuation Centers</label>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item" style="margin-left: -3px; margin-top: -10px; padding: 2px 5px;">
+                        <div class="custom-control custom-radio">
+                            <a class="nav-link nav-label display-inline">
+                                <input type="checkbox" class="custom-control-input ch-evacuation centers" id="candts-evac" name="cands-evac">
+                                <label class="custom-control-label" for="candts-evac" style="color:#147e91; font-size: 12.5px;">Candidates for Evacuation Centers</label>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item" style="margin-left: -3px; margin-top: -10px; padding: 2px 5px;">
+                        <div class="custom-control custom-checkbox">
+                            <a class="nav-link nav-label display-inline">
+                                <input id="suitareas-fuzzy" class="custom-contol-input ch-evacuation centers" type="checkbox">
+                                <label class="custom-conrol-label" for="exst-evac" style="color:#147e91; font-size: 14px;"> Suitable Areas (Fuzzy-AHP) </label>
+                            </a>
+                        </div>
+                    </li>
+					<li class="nav-item" style="margin-left: -3px; margin-top: -10px; margin-bottom: -10px; padding: 2px 5px;">
+                        <div class="custom-control custom-checkbox">
+                            <a class="nav-link nav-label display-inline">
+                                <input id="suitareas-rrl" class="custom-contol-input ch-evacuation centers" type="checkbox">
+                                <label class="custom-conrol-label" for="exst-evac" style="color:#147e91; font-size: 14px;"> Suitable Areas (RRL-Based) </label>
+							</a>
+						</div>
+					</li>		
+                </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                <a class="nav-link">
+                    <i class="fas fa-exclamation-triangle text-info p-r-10" style="margin-top: -3px; float: left;"></i>
+                    <p style="margin-left: 25px; margin-top: -6px;"> Hazards <i class="right fa fa-angle-left" style="margin-left: 117px;"></i></p>
+                </a>
+                    <ul class="nav nav-treeview" style="display:none; background-color: #f6f6f6; margin-inside: 0px;">
+                        <li class="nav-item" style="margin-left: -3px; margin-top: -10px; padding: 5px 5px;">
+                            <a class="nav-link">
+                                <i class="fas fa-cloud-sun-rain text-info p-r-10" style="margin-left: -5px; margin-top: -3px; float: left;"></i>
+                                <p style="margin-left: 19px; margin-top: -6px;"> Flood Events <i class="right fa fa-angle-left" style="margin-left: 85px;"></i></p>
+                            </a>
+                            <ul class="nav nav-treeview" style="display: none;">
+                                <li class="nav-item" style="margin-left: -3px; margin-top: -15px; padding: 5px 5px;">
+                                    <div class="custom-control custom-radio">
+                                        <a class="nav-link nav-label display-inline">
+                                            <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods2" name="ln-2floodevents">
+                                            <label class="custom-control-label" for="y2ln-floods" style="color:#147e91; font-size: 14px;"> 2-Year Rain Return Period </label>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item" style="margin-left: -3px; margin-top: -15px; padding: 5px 5px;">
+                                    <div class="custom-control custom-radio">
+                                        <a class="nav-link nav-label display-inline">
+                                            <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods5" name="ln-floodevents">
+                                            <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 14px;"> 5-Year Rain Return Period </label>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item" style="margin-left: -3px; margin-top: -15px; padding: 5px 5px;">
+                                    <div class="custom-control custom-radio">
+                                        <a class="nav-link nav-label display-inline">
+                                            <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods10" name="ln-floodevents">
+                                            <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 14px;"> 10-Year Rain Return Period </label>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item" style="margin-left: -3px; margin-top: -15px; padding: 5px 5px;">
+                                    <div class="custom-control custom-radio">
+                                        <a class="nav-link nav-label display-inline">
+                                            <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods15" name="ln-floodevents">
+                                            <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 14px;"> 15-Year Rain Return Period </label>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item" style="margin-left: -3px; margin-top: -15px; padding: 5px 5px;">
+                                    <div class="custom-control custom-radio">
+                                        <a class="nav-link nav-label display-inline">
+                                            <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods20" name="ln-floodevents">
+                                            <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 14px;"> 20-Year Rain Return Period </label>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item" style="margin-left: -3px; margin-top: -15px; padding: 5px 5px;">
+                                    <div class="custom-control custom-radio">
+                                        <a class="nav-link nav-label display-inline">
+                                            <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods25" name="ln-floodevents">
+                                            <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 14px;"> 25-Year Rain Return Period </label>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item" style="margin-left: -3px; margin-top: -15px; padding: 5px 5px;">
+                                    <div class="custom-control custom-radio">
+                                        <a class="nav-link nav-label display-inline">
+                                            <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods50" name="ln-floodevents">
+                                            <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 14px;"> 50-Year Rain Return Period </label>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="nav-item" style="margin-left: -3px; margin-top: -15px; margin-bottom: -20px; padding: 5px 5px;">
+                                    <div class="custom-control custom-radio">
+                                        <a class="nav-link nav-label display-inline">
+                                            <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods100" name="ln-floodevents">
+                                            <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 14px;"> 100-Year Rain Return Period </label>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                <a class="nav-link">
+                    <i class="fas fa-users-cog text-info p-r-10" style="margin-top: -3px; float: left;"></i>
+                    <p style="margin-left: 25px; margin-top: -6px;"> Exposure <i class="right fa fa-angle-left" style="margin-left: 110px;"></i></p>
+                </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item" style="margin-left: -3px; margin-top: -15px; padding: 5px 5px;">
+                            <div class="custom-control custom-radio">
+                                <a class="nav-link nav-label display-inline">
+                                    <input type="checkbox" class="custom-control-input ln-affectedbldgs" id="ln-floodaffectedbldgs" name="ln-affectedbldgs">
+                                    <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 13px;"> Affected Building and Structures </label>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item" style="margin-left: -3px; margin-top: -15px; padding: 5px 5px;">
+                            <div class="custom-control custom-radio">
+                                <a class="nav-link nav-label display-inline">
+                                    <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods" name="ln-capacity">
+                                    <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 14px;"> Show Spatial Capacity </label>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item" style="margin-left: -3px; margin-top: -15px; margin-bottom: -20px; padding: 5px 5px;">
+                            <div class="custom-control custom-radio">
+                                <a class="nav-link nav-label display-inline">
+                                    <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods" name="ln-floodevents">
+                                    <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 14px;"> Show Safe Locations </label>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="nav-item has-treeview">
+                <a class="nav-link">
+                    <i class="fas fa-folder-open text-info p-r-10" style="margin-top: -3px; float: left;"></i>
+                    <p style="margin-left: 25px; margin-top: -6px;"> Related Spatial Data <i class="right fa fa-angle-left" style="margin-left: 38px;"></i></p>
+                </a>
+                    <ul class="nav nav-treeview" style="display: none;">
+                        <li class="nav-item" style="margin-left: -3px; margin-top: -15px; padding: 5px 5px;">
+                            <div class="custom-control custom-radio">
+                                <a class="nav-link nav-label display-inline">
+                                    <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods" name="ln-floodevents">
+                                    <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 14px;"> Building Footprints </label>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item" style="margin-left: -3px; margin-top: -15px; padding: 5px 5px;">
+                            <div class="custom-control custom-radio">
+                                <a class="nav-link nav-label display-inline">
+                                    <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods" name="ln-floodevents">
+                                    <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 14px;"> Road Networks </label>
+                                </a>
+                            </div>
+                        </li>
+                        <li class="nav-item" style="margin-left: -3px; margin-top: -15px; margin-bottom: -15px; padding: 5px 5px;">
+                            <div class="custom-control custom-radio">
+                                <a class="nav-link nav-label display-inline">
+                                    <input type="checkbox" class="custom-control-input ln-floodevents" id="ln-floods" name="ln-floodevents">
+                                    <label class="custom-control-label" for="ln-floods" style="color:#147e91; font-size: 14px;"> Soil Map </label>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+
+                </li>
+
+                <li class="sidebar-header-title" style="margin-top: 3px; margin-left: 15px;"> ASSESSMENT </li>
+                <li class="nav-item">
+                <i class="fas fa-ruler text-info p-r-10" style="margin-left: 13px; margin-top: 5px; float: left;"></i>
+                <p style="margin-left: 40px; margin-top: 3px;"> Nearest Evacuation Center </p>
+            </li>
+        </ul>
+    </div>
+</aside>
+</div>
+
+
+<!-- Map Panel -->
+            <div class="content-wrapper default-map leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom" id="map" style="position: relative; margin-top: -20px;" tabindex="0">
+            </div>
+
+    </div>
+</div>
+
+<!--All Modals -->
+<div id="myModalAboutUs" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalAboutUs" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" style="font-size: 18px;">About Engage Caraga</h4>
+                <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="margin-left: 270px;">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="text-justify" style="font-size: 13px;">
+                    The Caraga Extension Program—ENGAGE Caraga is a community extension program implemented by the Department of Geodetic Engineering and College of Engineering
+                    and Geosciences & Caraga Center for Geo-Informatics (CCGeo). The program is based on the two (2) major projects on flood hazard mapping of the Caraga Region:
+                    Geo-informatics for the Systematic Assessment of Flood Effects and Risks for a Resilient Mindanao (GeoSAFER Agusan, 2014-2017), and the Philippine Light
+                    Detection and Ranging 1 Program (Phil-LiDAR 1, 2017- 2019).</p>
+                <p class= "text-justify" style="font-size: 13px;">
+                    Phil-LIDAR 1 Program, an expansion of the DREAM Program, aims to produce 3D flood and hazard maps for the 2/3 of the Philippine river systems. Aside from addressing disaster risk reduction and climate change adaptation, the resource information to be generated from this project will also be useful in providing the information requirements of various sectors in the country. On the other hand, the Geo-SAFER Agusan project was being implemented by the Caraga State University (CSU) through the Caraga Center for Geo-informatics (CCGeo) and is a component project funded by the DOST-PCIEERD. The project aims to conduct geo-informatics based approaches for the systematic assessment of flooding in the Agusan River Basin.</p>
+                <p class="text-justify" style="font-size: 13px;">
+                    These two major projects share a common goal: to prepare LGUs for impending flood hazards. These projects originates the birth of the extension program—ENGAGE Caraga. This extension program sought to answer the questions: - How successful were the two projects in preparing the LGUs for flood hazards? - What are the impacts of the flood hazard maps and other products provided to the LGUs? - How can we further use the maps in building resilience and reducing vulnerability to flood hazards beyond flood hazard mapping?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" style="font-size: 15px;">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="myModalServices" class="modal fade" role="dialog" tabindex="-1" aria-labelledby="myModalServices" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Products and Services Offered</h4>
+                <button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="margin-left: 270px;">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class= "text-justify"> Primary Objective: To engage Caraga LGUs on the use of GeoSAFER Hazard Maps and other project outputs for building resilience and reducing vulnerability to flood hazards. </p>
+                <p class="text-justify"> Specific Objectives: </p>
+                <p class="text-justify"> 1. To determine the impacts of two major R&D projects conducted by Caraga State University for flood hazard assessment of Caraga Region, namely Phil-LiDAR 1 and Geo-SAFER Agusan, to the flood hazard preparedness of Caraga Region LGUs;</p>
+                <p class="text-justify"> 2. The program also aims to identify the specific needs of LGUs in terms of building flood hazard resilience and reducing vulnerability; </p>
+                <p class="text-justify"> 3. To enhance and update the existing flood hazard maps;</p>
+                <p class="text-justify"> 4. To provide additional products and services to address the specific needs of the LGUs based on the assessment.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- All Javascripts -->
+<script>
+    var hamburger = document.querySelector(".hamburger");
+    hamburger.addEventListener("click", function(){
+        document.querySelector("body").classList.toggle("active");
+    })
+</script>
+<script>
+    var elem = document.documentElement;
+    function openFullscreen() {
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen();
+        }
+    }
+
+    /**/
+
+    import $ from 'jquery'
+
+    /**
+     * Constants
+     * ====================================================
+     */
+
+    const NAME = 'Fullscreen'
+    const DATA_KEY = 'lte.fullscreen'
+    const JQUERY_NO_CONFLICT = $.fn[NAME]
+
+    const SELECTOR_DATA_WIDGET = '[data-widget="fullscreen"]'
+    const SELECTOR_ICON = `${SELECTOR_DATA_WIDGET} i`
+
+    const Default = {
+        minimizeIcon: 'fa-compress-arrows-alt',
+        maximizeIcon: 'fa-expand-arrows-alt'
+    }
+
+    /**
+     * Class Definition
+     * ====================================================
+     */
+
+    class Fullscreen {
+        constructor(_element, _options) {
+            this.element = _element
+            this.options = $.extend({}, Default, _options)
+        }
+
+        // Public
+
+        toggle() {
+            if (document.fullscreenElement ||
+                document.mozFullScreenElement ||
+                document.webkitFullscreenElement ||
+                document.msFullscreenElement) {
+                this.windowed()
+            } else {
+                this.fullscreen()
+            }
+        }
+
+        fullscreen() {
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen()
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen()
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen()
+            }
+
+            $(SELECTOR_ICON).removeClass(this.options.maximizeIcon).addClass(this.options.minimizeIcon)
+        }
+
+        windowed() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen()
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen()
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen()
+            }
+
+            $(SELECTOR_ICON).removeClass(this.options.minimizeIcon).addClass(this.options.maximizeIcon)
+        }
+
+        // Static
+
+        static _jQueryInterface(config) {
+            let data = $(this).data(DATA_KEY)
+
+            if (!data) {
+                data = $(this).data()
+            }
+
+            const _options = $.extend({}, Default, typeof config === 'object' ? config : data)
+            const plugin = new Fullscreen($(this), _options)
+
+            $(this).data(DATA_KEY, typeof config === 'object' ? config : data)
+
+            if (typeof config === 'string' && /toggle|fullscreen|windowed/.test(config)) {
+                plugin[config]()
+            } else {
+                plugin.init()
+            }
+        }
+    }
+
+    /**
+     * Data API
+     * ====================================================
+     */
+    $(document).on('click', SELECTOR_DATA_WIDGET, function () {
+        Fullscreen._jQueryInterface.call($(this), 'toggle')
+    })
+
+    /**
+     * jQuery API
+     * ====================================================
+     */
+
+    $.fn[NAME] = Fullscreen._jQueryInterface
+    $.fn[NAME].Constructor = Fullscreen
+    $.fn[NAME].noConflict = function () {
+        $.fn[NAME] = JQUERY_NO_CONFLICT
+        return Fullscreen._jQueryInterface
+    }
+
+    export default Fullscreen
+
+
+</script>
+<script>
+    $('#useLoc').click(function(){
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position){
+                console.log(position);
+                $.get( "http://maps.googleapis.com/maps/api/geocode/json?latlng="+ position.coords.latitude + "," + position.coords.longitude +"&sensor=false", function(data) {
+                    console.log(data);
+                })
+                var img = new Image();
+                img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + position.coords.latitude + "," + position.coords.longitude + "&zoom=13&size=800x400&sensor=false";
+                $('#output').html(img);
+            });
+        }
+    });
+
+    function useCurrentLoc() {
+        map.locate({
+            setView: true,
+            maxZoom: 20,
+            enableHighAccuracy: true
+        });
+    }
+</script>
+
+<script>
+    var map = L.map('map').setView([8.695740, 125.6171940], 13);
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent('You clicked the map at ' + e.latlng.toString())
+            .openOn(map);
+    }
+    map.on('click', onMapClick);
+</script>
+
+
+<script>
+
+    var marker1 = L.marker ([8.702958333, 125.6271944]).addTo(map)
+        .bindPopup('<b>Ambacon Evacuation Center</b><br /> <img alt src=img/Geotagged%20Evacuation%20Photos/Ambacon.jpg style="width: 300px; height: 250px;">').openPopup();
+
+    var marker2 = L.marker ([8.740525, 125.5793667]).addTo(map)
+        .bindPopup('<b>Lingayao Evacuation Center</b><br /> <img alt src=img/Geotagged%20Evacuation%20Photos/Lingayao.jpg style="width:300px; height:250px;">').openPopup();
+
+    var marker3 = L.marker ([8.721855556, 125.5717639]).addTo(map)
+        .bindPopup('<b>Maningalao Evacuation Center</b><br /> <img alt src=img/Geotagged%20Evacuation%20Photos/Maningalao.jpg style="width:300px; height: 250px;">').openPopup();
+
+    var marker4 = L.marker ([8.714311111, 125.5886083]).addTo(map)
+        .bindPopup('<b>Mat-i Evacuation Center</b><br /> <img alt src=img/Geotagged%20Evacuation%20Photos/Mat-i.jpg style="width:300px; height: 250px;">').openPopup();
+
+    var marker5 = L.marker ([8.719472222, 125.6008806]).addTo(map)
+        .bindPopup('<b>Pinana-an Evacuation Center</b><br /> <img alt src=img/Geotagged%20Evacuation%20Photos/Pinana-an.jpg style="width:300px; height: 250px;">').openPopup();
+
+    var marker6 = L.marker ([8.733477778, 125.5995722]).addTo(map)
+    .bindPopup('<b>Poblacion Evacuation Center</b><br /> <img alt src=img/Geotagged%20Evacuation%20Photos/Poblacion.jpg style="width:300px; height: 250px;">').openPopup();
+
+    var marker7 = L.marker ([8.724077778, 125.6479611]).addTo(map)
+        .bindPopup('<b>Rosario Evacuation Center</b><br /> <img alt src=img/Geotagged%20Evacuation%20Photos/Rosario.jpg style="width:300px; height: 250px;">').openPopup();
+
+    var marker8 = L.marker ([8.730505556, 125.6293194]).addTo(map)
+        .bindPopup('<b>San Isidro Evacuation Center</b><br /> <img alt src=img/Geotagged%20Evacuation%20Photos/San%20Isidro.jpg style="width:300px; height: 250px;">').openPopup();
+
+    var marker9 = L.marker ([8.704327778, 125.6651944]).addTo(map)
+            .bindPopup('<b>San Roque Evacuation Center</b><br /> <img alt src=img/Geotagged%20Evacuation%20Photos/San%20Roque.jpg style="width:300px; height: 250px;">').openPopup();
+
+    var marker10 = L.marker ([8.743894444, 125.5975833]).addTo(map)
+        .bindPopup('<b>Tinucoran Evacuation Center</b><br /> <img alt src=img/Geotagged%20Evacuation%20Photos/Tinucoran.jpg style="width:300px; height: 250px;">').openPopup();
+
+    var marker11 = L.marker ([8.751780556, 125.6290528]).addTo(map)
+        .bindPopup('<b>Katipunan Evacuation Center</b><br /> <img alt src=img/Geotagged%20Evacuation%20Photos/Katipunan.jpg style="width:300px; height: 250px;">').openPopup();
+
+
+    var circle = L.circle([8.702958333, 125.6271944], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 20
+    }).addTo(map).bindPopup;
+    var circle = L.circle([8.740525, 125.5793667], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 20
+    }).addTo(map).bindPopup;
+    var circle = L.circle([8.721855556, 125.5717639], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 20
+    }).addTo(map).bindPopup;
+    var circle = L.circle([8.714311111, 125.5886083], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 20
+    }).addTo(map).bindPopup;
+    var circle = L.circle([8.719472222, 125.6008806], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 20
+    }).addTo(map).bindPopup;
+    var circle = L.circle([8.733477778, 125.5995722], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 20
+    }).addTo(map).bindPopup;
+    var circle = L.circle([8.724077778, 125.6479611], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 20
+    }).addTo(map).bindPopup;
+    var circle = L.circle([8.730505556, 125.6293194], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 20
+    }).addTo(map).bindPopup;
+    var circle = L.circle([8.704327778, 125.6651944], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 20
+    }).addTo(map).bindPopup;
+    var circle = L.circle([8.743894444, 125.5975833], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 20
+    }).addTo(map).bindPopup;
+    var circle = L.circle([8.751780556, 125.6290528], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.5,
+        radius: 20
+    }).addTo(map).bindPopup;
+
+
+    var polygon = L.polygon([
+        [8.786216667, 125.2366222],
+        [8.656191667, 125.239825],
+        [8.653875, 125.5388556],
+        [8.697244444, 125.5810167],
+        [8.697938889, 125.6722306],
+        [8.729294444, 125.6783694],
+        [8.758091667, 125.6776083],
+        [8.797111111, 125.6496333],
+        [8.749658333, 125.6106722],
+        [8.7499, 125.605175],
+        [8.749983333, 125.5567528],
+        [8.783344444, 125.5142167]
+
+    ]).addTo(map).bindPopup;
+
+    var popup = L.popup()
+        .setLatLng([8.734937, 125.610114])
+        .setContent('Municipality of Las Nieves')
+        .openOn(map);
+
+    function onMapClick(e) {
+        popup
+            .setLatLng(e.latlng)
+            .setContent('You clicked the map at ' + e.latlng.toString())
+            .openOn(map);
+    }
+
+    map.on('click', onMapClick);
+</script>
+
+
+<script>
+
+    //Base Maps
+
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: 'Map data &copy; OpenStreetMap contributors',
+        name: 'Open Street Map',
+        zIndex: 0
+    }) .addTo (map);
+
+    var googleSat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        maxZoom: 20,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        attribution: 'Map data &copy; Google',
+        name: 'Google Satellite',
+        zIndex: 0
+    });
+
+    var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}', {
+        maxZoom: 20,
+        subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+        attribution: 'Map data &copy; Google',
+        name: 'Google Hybrid',
+        zIndex: 0
+    });
+
+    var bingMap = L.tileLayer.bing({
+        bingMapsKey: 'Ao6UEij7ZblJ1soOx6opo-plK6LyISwyibIqcPQSRWpxE_yQ27qwI7HdoDNN9ePl',
+        imagerySet: 'Road',
+        zIndex: 0
+    });
+
+    const BASE_MAP = {
+        osm: osm,
+        googleSat: googleSat,
+        googleHybrid: googleHybrid,
+        bingmap: bingMap,
+    };
+//End Base Map
+
+    const basemapData = {
+        "osm": true,
+        "googleSat": true,
+        "googleHybrid": true,
+        "bingMap": true,
+};
+</script>
+
+<script>
+    var basemapLayers = [ /* see values in Basemaps.js */
+        { 'id': 'osm', 'layer': osmBasemapLayer, 'Leaflet': 'OpenStreetMap' },
+        { 'id': 'googleSat', 'layer': googleBasemapLayer, 'Leaflet': 'Google Map' },
+        { 'id': 'googleHybrid', 'layer': hybridBasemapLayer, 'Leaflet': 'Google Map' },
+        { 'id': 'bingMap', 'layer': bingBasemapLayer, 'Leaflet': 'Google Map' },
+    ];
+
+    for (let j = 0; j < basemapLayers.length; j++) {
+        if (basemapData[basemapLayers[j].id] === false) {
+            $(`#${basemapLayers[j].id}`).attr('disabled', true);
+
+        }
+    }
+
+    $("basemap").change(function () {
+        let i;
+        for (i = 0; i < basemapLayers.length; i++) {
+            if (this.id == basemapLayers[i].id) {
+                if (basemapData[this.id] === true) {
+                    map.addLayer(basemapLayers[i].layer);
+                }
+
+            } else {
+                if (basemapData[this.id] === true) {
+                    map.removeLayer(basemapLayers[i].layer);
+                }
+            }
+        }
+    });
+</script>
+<script>
+    if ( document.getElementById("muni").value === 'Agusan del Norte' ) {
+        var map = new google.maps.Map(document.getElementById('map'),{
+            zoom: 7,
+            center: AgusandelNorte
+        });
+    }
+</script>
+
+
+<script src="engage.js"></script>
+<script src="libs/leaflet/leaflet.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
+
+
+
+
+
+
+

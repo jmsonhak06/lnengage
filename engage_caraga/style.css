@@ -1,0 +1,179 @@
+
+.header {
+    overflow: hidden;
+    background-color: #e2edf2;
+    padding: 2px 2px;
+    display: block;
+    height: 70px;
+    width: 100%;
+}
+
+.header h4 {
+    float: right;
+    color: #c00000;
+    text-align: center;
+    font-size: 18px;
+    font-style: italic;
+    font-weight: bold;
+    font-family: "Book Antiqua", 'Andalus', sans-serif;
+    letter-spacing: normal;
+    margin-top:9px;
+    padding: 3px;
+}
+
+.header-right {
+    float: right;
+    margin-top: -10px;
+}
+
+@media screen and (max-width: 900px) {
+    .header {
+        float: none;
+        display: block;
+    }
+    .header-right {
+        float: none;
+    }
+}
+
+/* Style for Navigation Bar */
+.wrapper .section{
+    width: calc(100% - 270px);
+    margin-left: 270px;
+    transition: all 0.5s ease;
+}
+
+.wrapper .section .navbar{
+    background: rgb(62, 115, 138);
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 2px;
+    position: relative;
+    justify-content: space-between;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    border-radius: 0;
+}
+
+.wrapper .section .navbar .hamburger a{
+    font-size: 27px;
+    text-decoration: none;
+}
+
+a.hamburger:hover{
+    background-color: black;
+}
+
+a.hamburger:focus {
+    background-color: transparent !important;
+}
+
+.nav  li  a:focus, .nav  li  a:hover {
+    text-decoration: none;
+}
+
+
+.wrapper .section .navbar a {
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    text-align: center;
+    float: left;
+}
+.wrapper .section .navbar a:hover {
+    background-color: #000;
+}
+.wrapper .section .navbar a.active {
+    background-color: #04AA6D;
+}
+
+ul.nav.items{
+    height: 50px;
+    list-style-type: none;
+    position: absolute;
+    margin-top: -20px;
+}
+
+.navbar-nav.ml-auto {
+    list-style-type: none;
+    float: left;
+    display: block;
+    position: absolute;
+}
+
+.wrapper .section nav ul li{
+    display: inline-block;
+    line-height: 40px;
+    margin: 0 5px;
+}
+
+.wrapper .section nav ul li a{
+    color: white;
+    font-size: 17px;
+    padding: 7px 7px;
+    border-radius: 3px;
+    text-transform: none;
+}
+
+.navbar-nav li a{
+    display: list-item;
+    float: none;
+    line-height: 24px;
+    position: static;
+    z-index: auto;
+}
+
+#map{
+    height: 80vh !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

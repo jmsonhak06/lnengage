@@ -1,0 +1,142 @@
+/* Style for Sidebar */
+body{
+    background: #f5f6fa;
+    overflow-x: hidden;
+}
+
+/* width */
+.sidebar::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+.sidebar::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #b6b6b6;
+    border-radius: 0;
+}
+
+/* Handle */
+.sidebar::-webkit-scrollbar-thumb {
+    background: darkgrey;
+    border-radius: 0;
+}
+
+.wrapper .sidebar{
+    background: rgb(253, 253, 253);
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 270px;
+    height: 100%;
+    padding: 20px 0;
+    transition: all 0.5s ease;
+}
+.layout-fixed .wrapper .sidebar {
+    height: calc(100vh - (3.5rem + 1px));
+}
+.sidebar {
+    overflow-x: hidden;
+    margin-left: -2px;
+    width: 285px;
+}
+
+div.sidebar-nav-header{
+    width: 269px;
+    height: 50px;
+    padding: 7px;
+    margin-top: 70px;
+    background-color: #3d6b82;
+    font-family: "Poppins" ,sans-serif;
+    border-radius: 0;
+    font-weight: bolder;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.sidebar-nav-header-title{
+    font-size: 18px;
+    color: #ffffff;
+    padding: 0 7px;
+    text-align: center;
+    border-radius: 4px;
+    letter-spacing: 0.088em;
+    font-weight: 900;
+    font-family: "Segoe UI Symbol", Arial, Helvetica, sans-serif, Roboto, Helvetica;
+    height: 50px;
+    margin: 8px;
+}
+
+body.active .wrapper .sidebar{
+    left: -270px;
+}
+
+body.active .wrapper .section{
+    margin-left: 0;
+    width: 100%;
+}
+
+.wrapper .section .container{
+    margin-top: -20px;
+    background: #ffffff;
+    padding: 0;
+    position: fixed;
+    overflow: hidden;
+    width: calc(100% - 270px);
+    transition: all 0.5s ease;
+}
+
+.sidebar-header-title {
+    background-color: #107585;
+    color: #FFFFFF;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 5px;
+    width: 240px;
+    height: 35px;
+    font-family: 'Poppins', sans-serif;
+    vertical-align: middle;
+}
+
+.wrapper .sidebar-nav ul{
+    margin: 1px;
+    box-sizing:border-box;
+    color: #FFFFFF;
+    display: inline-block;
+}
+.sidebar li.nav-item{
+    margin-left: 12px;
+    margin-bottom: 0;
+    font-size: 15px;
+    color: black;
+    box-sizing: content-box;
+    white-space: nowrap;
+    padding: 3px 3px;
+    display: inline-block;
+    vertical-align: center;
+}
+
+.sidebar li.nav-item p{
+    color: black;
+}
+
+.sidebar li.nav-item ul{
+    padding: 5px 5px;
+    margin-top: 3px;
+}
+
+.sidebar .nav-pills .nav-link{
+    height: 30px;
+    cursor: pointer;
+}
+
+.sidebar .nav li a:hover{
+    background-color: #c4fbf9;
+    width:240px;
+}
+
+.form-control {
+    font-size: 1.45rem !important;
+}
